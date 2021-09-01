@@ -1,13 +1,21 @@
 import "./App.css";
+
+import { Provider } from "react-redux";
+import { Store } from "./Store";
+
 import DrawingApp from "./DrawingApp";
+import GithubUsers from "./GithubProfile";
 import ToDoApp from "./TodoApp";
 
 function App() {
   return (
-    <div className="App">
+    <>
+      {/* <DrawingApp /> */}
       {/* <ToDoApp /> */}
-      <DrawingApp />
-    </div>
+      <Provider store={Store}>
+        <GithubUsers />
+      </Provider>
+    </>
   );
 }
 

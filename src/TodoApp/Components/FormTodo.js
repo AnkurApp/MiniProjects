@@ -11,21 +11,19 @@ export default function FormTodo({ addTodo }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <div>
-          <h2>{"Add Todo"}</h2>
-        </div>
-        <input
-          type="text"
-          className="input"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder="Add new todo"
-        />
-      </div>
-      <button variant="primary mb-3" type="submit">
-        Submit
+    <form className={"form"} onSubmit={handleSubmit}>
+      <h2>{"Add Todo"}</h2>
+
+      <input
+        type="text"
+        className={"input"}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Add New Todo"
+      />
+
+      <button type="submit" className={"btn"}>
+        {" Submit"}
       </button>
     </form>
   );

@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Todo from "./Components/Todo";
 import FormTodo from "./Components/FormTodo";
+import "./style.css";
 
 export default function ToDoApp() {
   const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const todoAdded = JSON.parse(localStorage.getItem("TodoList"));
+    if (todoAdded) {
+      setTodos(todoAdded);
+    }
+  }, []);
 
   const addTodo = (text) => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
   };
+
+  useEffect(() => {
+    localStorage.setItem("TodoList", JSON.stringify(todos));
+  }, [todos]);
 
   const markTodo = (index) => {
     const newTodos = [...todos];
@@ -23,26 +35,19 @@ export default function ToDoApp() {
   };
 
   return (
-    <div>
-      <div className="container">
-        <h1>{"Todo List"}</h1>
-        <FormTodo addTodo={addTodo} />
-        <div>
-          {todos?.map((todo, index) => (
-            <div>
-              <div>
-                <Todo
-                  key={index}
-                  index={index}
-                  todo={todo}
-                  markTodo={markTodo}
-                  removeTodo={removeTodo}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+    <div className="mainContainer">
+      <h1>{"Todo List"}</h1>
+      <FormTodo addTodo={addTodo} />
+
+      {todos?.map((todo, index) => (
+        <Todo
+          key={index}
+          index={index}
+          todo={todo}
+          markTodo={markTodo}
+          removeTodo={removeTodo}
+        />
+      ))}
     </div>
   );
 }

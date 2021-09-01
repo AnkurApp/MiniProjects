@@ -1,15 +1,15 @@
 export default function Todo({ todo, index, markTodo, removeTodo }) {
   return (
-    <div className="todo">
-      <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>
+    <div className={"todo"}>
+      <p style={{ textDecoration: todo.isDone ? "line-through" : "" }}>
         {todo.text}
-      </span>
+      </p>
       <div>
-        <button variant="outline-success" onClick={() => markTodo(index)}>
-          ✓
-        </button>{" "}
-        <button variant="outline-danger" onClick={() => removeTodo(index)}>
-          ✕
+        <button className={"btn + doneBtn"} onClick={() => markTodo(index)}>
+          {"Done"}
+        </button>
+        <button className={"btn + deleteBtn"} onClick={() => removeTodo(index)}>
+          {"Delete"}
         </button>
       </div>
     </div>

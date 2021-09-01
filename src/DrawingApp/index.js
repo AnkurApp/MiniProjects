@@ -1,62 +1,29 @@
 import React, { useRef, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
+import Footer from "./Components/footer";
 
-const styles = makeStyles({
+const useStyles = makeStyles({
   mainContainer: {
-    marginTop: "0px",
+    width: "100%",
+    minHeight: "100vh",
+    boxSizing: "border-box",
+    padding: "1.5rem",
+    textAlign: "center",
   },
+
   mainHeading: {
-    fontSize: "35px",
-    fontWeight: "700",
-  },
-  buttonsDiv: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  increaseBtn: {
-    border: "none",
-    outline: "none",
-    fontSize: "20px",
-    cursor: "pointer",
+    fontSize: "30px",
     fontWeight: "bold",
-    backgroundColor: "#9cd1f0",
-    padding: "3px 20px",
-    borderRadius: "15px",
   },
-  clearBtn: {
-    border: "none",
-    outline: "none",
-    fontSize: "20px",
-    cursor: "pointer",
-    fontWeight: "bold",
-    backgroundColor: "#e3876b",
-    padding: "3px 20px",
-    borderRadius: "15px",
-  },
-  changeBtn: {
-    border: "none",
-    outline: "none",
-    fontSize: "20px",
-    cursor: "pointer",
-    fontWeight: "bold",
-    backgroundColor: "#92c257",
-    padding: "3px 20px",
-    borderRadius: "15px",
-  },
-  circleBtn: {
-    border: "none",
-    outline: "none",
-    fontSize: "20px",
-    cursor: "pointer",
-    fontWeight: "bold",
-    backgroundColor: "#d4eb71",
-    padding: "3px 20px",
-    borderRadius: "15px",
+
+  canvasArea: {
+    border: "2px solid black",
+    margin: "0.5rem 0",
   },
 });
 
 export default function DrawingApp() {
-  const classes = styles();
+  const classes = useStyles();
   const [isDrawing, setIsDrawing] = useState(false);
   const [isCircle, setIsCircle] = useState(false);
   const [isLine, setIsLine] = useState(false);
@@ -74,10 +41,10 @@ export default function DrawingApp() {
     const canvas = canvasRef.current;
 
     canvas.width = (window.innerWidth * 19) / 20;
-    canvas.height = (window.innerHeight * 3) / 4;
+    canvas.height = (window.innerHeight * 2) / 2.4;
 
     const context = canvas.getContext("2d");
-    // context.scale(2, 2);
+
     context.fillStyle = "white";
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.lineCap = "round";
@@ -168,14 +135,10 @@ export default function DrawingApp() {
   }
 
   function handleColor() {
-    console.log("inside color");
     let currentcolor = color;
-    console.log(currentcolor, "currentcolor");
     if (currentcolor === "black") {
-      console.log("inside black");
       currentcolor = "red";
     } else {
-      console.log("inside red");
       currentcolor = "black";
     }
     setColor(currentcolor);
@@ -183,40 +146,26 @@ export default function DrawingApp() {
 
   return (
     <div className={classes.mainContainer}>
-      <p className={classes.mainHeading}>{"DRAW HERE"}</p>
-      <div>
-        <canvas
-          onMouseDown={startDrawing}
-          onMouseUp={finishDrawing}
-          onMouseMove={draw}
-          ref={canvasRef}
-        />
-        <div className={classes.buttonsDiv}>
-          <button onClick={handleIncrease} className={classes.increaseBtn}>
-            {"INCREASE"}
-          </button>
-          <span>{size}</span>
-          <button onClick={handleDecrease} className={classes.increaseBtn}>
-            {"DECREASE"}
-          </button>
-          <button
-            onClick={() => setIsCircle(true)}
-            className={classes.circleBtn}
-          >
-            {"CIRCLE"}
-          </button>
-          <button onClick={() => setIsLine(true)} className={classes.circleBtn}>
-            {"LINE"}
-          </button>
-          <button onClick={handleColor} className={classes.changeBtn}>
-            {"CHANGE COLOR"}
-          </button>
-          <span>{color}</span>
-          <button onClick={clearCanvas} className={classes.clearBtn}>
-            {" CLEAR"}
-          </button>
-        </div>
-      </div>
+      <h2 className={classes.mainHeading}>{"Draw Here"}</h2>
+
+      <canvas
+        className={classes.canvasArea}
+        onMouseDown={startDrawing}
+        onMouseUp={finishDrawing}
+        onMouseMove={draw}
+        ref={canvasRef}
+      />
+
+      <Footer
+        handleIncrease={handleIncrease}
+        handleDecrease={handleDecrease}
+        size={size}
+        setIsCircle={setIsCircle}
+        setIsLine={setIsLine}
+        handleColor={handleColor}
+        color={color}
+        clearCanvas={clearCanvas}
+      />
     </div>
   );
 }
