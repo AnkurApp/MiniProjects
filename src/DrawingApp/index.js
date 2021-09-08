@@ -94,16 +94,16 @@ export default function DrawingApp() {
     context.fillRect(0, 0, canvas.width, canvas.height);
   };
 
-  function drawCircle(x, y) {
+  const drawCircle = (x, y) => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     context.beginPath();
     context.arc(x, y, size, 0, Math.PI * 2);
     context.fillStyle = color;
     context.fill();
-  }
+  };
 
-  function drawLine(x1, y1, x, y) {
+  const drawLine = (x1, y1, x, y) => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     context.beginPath();
@@ -112,9 +112,9 @@ export default function DrawingApp() {
     context.strokeStyle = color;
     context.lineWidth = size * 2;
     context.stroke();
-  }
+  };
 
-  function handleIncrease() {
+  const handleIncrease = () => {
     let currentsize = size;
     currentsize = currentsize + 2;
     if (currentsize > 50) {
@@ -122,9 +122,9 @@ export default function DrawingApp() {
     }
     setSize(currentsize);
     setIsCircle(false);
-  }
+  };
 
-  function handleDecrease() {
+  const handleDecrease = () => {
     let currentsize = size;
     currentsize = currentsize - 2;
     if (currentsize < 2) {
@@ -132,9 +132,9 @@ export default function DrawingApp() {
     }
     setSize(currentsize);
     setIsCircle(false);
-  }
+  };
 
-  function handleColor() {
+  const handleColor = () => {
     let currentcolor = color;
     if (currentcolor === "black") {
       currentcolor = "red";
@@ -142,7 +142,7 @@ export default function DrawingApp() {
       currentcolor = "black";
     }
     setColor(currentcolor);
-  }
+  };
 
   return (
     <div className={classes.mainContainer}>
