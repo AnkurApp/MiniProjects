@@ -73,13 +73,13 @@ export default function Footer(props) {
         </Button>
       </div>
 
-      <Button
+      <input
         onClick={handleColor}
         className={classes.Btn}
+        type={"color"}
         style={{ backgroundColor: `${textColor}`, color: "#fff" }}
-      >
-        {`Change Color to ${textColor} `}
-      </Button>
+      />
+
       <Button onClick={clearCanvas} className={classes.Btn}>
         {" CLEAR"}
       </Button>

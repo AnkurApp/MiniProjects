@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mainContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.searchContainer {
+  width: 70%;
+  margin: 2rem auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  margin-left: 1rem;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.searchInput::placeholder {
+  font-size: 16px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cardContainer {
+  width: 30%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.cardContainer h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.cardContainer > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0.5rem 0;
+  border-bottom: 1px solid rgb(221, 220, 220);
+}
+
+.cardContainer:first-child > div {
+  border-bottom: none;
+}
+
+.cardContainer > div h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.cardContainer div h5,
+.cardContainer div span {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0.5rem 0;
+}

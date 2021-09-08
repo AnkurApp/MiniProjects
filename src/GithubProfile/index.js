@@ -6,7 +6,6 @@ import "./style.css";
 
 export default function GithubUsers() {
   const { user } = useSelector((state) => state.userReducer);
-  console.log(user);
 
   return (
     <div className={"mainContainer"}>

@@ -1,0 +1,83 @@
+.mainContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.mainContainer h1 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.cardContainer {
+  width: 35%;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+}
+
+.cardContainer .passwordSection {
+  width: 100%;
+  background-color: #4b4bee;
+  height: 40px;
+  padding: 1.5rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardContainer .passwordSection h4 {
+  width: 90%;
+  font-size: 20px;
+  padding: 0.3rem 0;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.cardContainer .passwordSection .copyBtn {
+  cursor: pointer;
+  color: #fff;
+}
+
+.cardContainer .formGroup {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.cardContainer .formGroup .inputLabel {
+  font-size: 18px;
+}
+
+.cardContainer .formGroup:first-child input {
+  width: 50px;
+  font-size: 18px;
+  padding: 0.1rem 0.35rem;
+}
+
+.cardContainer .formGroup:first-child input:focus,
+.cardContainer .formGroup:first-child input:hover {
+  width: 60px;
+}
+
+.cardContainer .formGroup input[type="checkbox"] {
+  width: "30px";
+  height: "30px";
+}
+
+.cardContainer .generateBtn {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  background-color: grey;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.cardContainer .generateBtn:hover {
+  background-color: green;
+}
